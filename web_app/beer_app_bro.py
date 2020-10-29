@@ -15,7 +15,7 @@ st.title('Magical Beer BRO')
 
 st.markdown(' ## Beer Review Organizer')
 st.markdown(' ### Type a stereotypical description of your beer and see if the machine learning models can predict your beer!')
-desc = st.text_input('Write a description or review of your beer. Be descriptive!')
+desc = st.text_area('Write a description or review of your beer. Be descriptive!')
 
 test_df = search_desc(desc)
 
@@ -36,7 +36,7 @@ with open('xgb3b.pickle', 'rb') as to_read:
 
 # test_df = get_stats()
 def predictor(test_df):
-    preds = [knn3b.predict(test_df)[0], mnb3b.predict(test_df)[0],\
+    preds = [knn3b.predict(test_df)[0], #mnb3b.predict(test_df)[0],\
              forest3b.predict(test_df)[0], svc3b.predict(test_df)[0], xgb3b.predict(test_df)[0]]
     clean_pred = defaultdict(int)
     for pred in preds:
@@ -49,19 +49,26 @@ def predictor(test_df):
         else:
             clean_pred['Other'] += 1
     res_dic = dict(clean_pred)
-    for key, value in res_dic.items():
+    max_vote = max(res_dic.items(), key=lambda x: x[1])[0]
+    return str(max_vote)
+    """for key, value in res_dic.items():
         if value == len(preds) // 2:
             return("TIE")
             break
         elif value > len(preds) / 2:
             return(key)
         else:
-            continue
+            continue"""
 button = st.button('Guess!')
 if button:
     st.markdown("## Oh I know that beer! It's a: \n")
     st.markdown("# " + predictor(test_df))
-# print(res_dic, preds)
+    if predictor(test_df) == 'Pale Ales and Lagers':
+        st.image('ipa_img.jpg', use_column_width=True)
+    if predictor(test_df) == 'Strong/Dark Ales':
+        st.image('stout_img.jpg', use_column_width=True)
+    if predictor(test_df) == 'Other (Sours, Wild, Holiday styles)':
+        st.image('gose_img.jpg', use_column_width=True)
 
 
 
