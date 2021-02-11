@@ -30,13 +30,13 @@ test_df = pd.DataFrame(beer_array, index=['og', 'fg', 'abv', 'srm', 'ibu', 'bugu
 #     forest3 = pickle.load(to_read)
 # with open('forest3op.pickle', 'rb') as to_read:
 #     forest3op = pickle.load(to_read)
-with open('/app/beer_project/web_app/pkl_models/knn3.pickle', 'rb') as to_read:
+with open('/app/beer_project/web_app/knn3.pickle', 'rb') as to_read:
     knn3 = pickle.load(to_read)
 # with open('mnb3.pickle', 'rb') as to_read:
     mnb3 = pickle.load(to_read)
-with open('/app/beer_project/web_app/pkl_models/logr3.pickle', 'rb') as to_read:
+with open('/app/beer_project/web_app/logr3.pickle', 'rb') as to_read:
     logr3 = pickle.load(to_read)
-with open('/app/beer_project/web_app/pkl_models/xgb3.pickle', 'rb') as to_read:
+with open('/app/beer_project/web_app/xgb3.pickle', 'rb') as to_read:
     xgb3 = pickle.load(to_read)
 
 
