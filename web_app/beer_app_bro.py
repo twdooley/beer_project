@@ -22,8 +22,8 @@ test_df = search_desc(desc)
 
 
 
-with open('f3.pickle', 'rb') as to_read:
-    forest3b = pickle.load(to_read)
+# with open('f3.pickle', 'rb') as to_read:
+#     forest3b = pickle.load(to_read)
 with open('knn3b.pickle', 'rb') as to_read:
     knn3b = pickle.load(to_read)
 with open('mnb3b.pickle', 'rb') as to_read:
@@ -37,7 +37,7 @@ with open('xgb3b.pickle', 'rb') as to_read:
 # test_df = get_stats()
 def predictor(test_df):
     preds = [knn3b.predict(test_df)[0], #mnb3b.predict(test_df)[0],\
-             forest3b.predict(test_df)[0], svc3b.predict(test_df)[0], xgb3b.predict(test_df)[0]]
+             svc3b.predict(test_df)[0], xgb3b.predict(test_df)[0]] #forest3b.predict(test_df)[0]]
     clean_pred = defaultdict(int)
     for pred in preds:
         if pred == 'Pale Ales and Lagers':
