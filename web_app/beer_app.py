@@ -26,13 +26,13 @@ test_df = pd.DataFrame(beer_array, index=['og', 'fg', 'abv', 'srm', 'ibu', 'bugu
 
 
 
-with open('forest3.pickle', 'rb') as to_read:
-    forest3 = pickle.load(to_read)
-with open('forest3op.pickle', 'rb') as to_read:
-    forest3op = pickle.load(to_read)
+# with open('forest3.pickle', 'rb') as to_read:
+#     forest3 = pickle.load(to_read)
+# with open('forest3op.pickle', 'rb') as to_read:
+#     forest3op = pickle.load(to_read)
 with open('knn3.pickle', 'rb') as to_read:
     knn3 = pickle.load(to_read)
-with open('mnb3.pickle', 'rb') as to_read:
+# with open('mnb3.pickle', 'rb') as to_read:
     mnb3 = pickle.load(to_read)
 with open('logr3.pickle', 'rb') as to_read:
     logr3 = pickle.load(to_read)
@@ -42,9 +42,8 @@ with open('xgb3.pickle', 'rb') as to_read:
 
 # test_df = get_stats()
 def predictor(test_df):
-    preds = [knn3.predict(test_df)[0], mnb3.predict(test_df)[0], logr3.predict(test_df)[0],
-             forest3op.predict(test_df)[0], forest3.predict(test_df)[0], xgb3.predict(test_df)[0],
-             xgb3.predict(test_df)[0]]
+    preds = [knn3.predict(test_df)[0], logr3.predict(test_df)[0],
+             xgb3.predict(test_df)[0], xgb3.predict(test_df)[0]] #forest3op.predict(test_df)[0], forest3.predict(test_df)[0] mnb3.predict(test_df)[0],
     clean_pred = defaultdict(int)
     for pred in preds:
         if pred == 'IPA/Pale Ales':
@@ -63,10 +62,10 @@ def predictor(test_df):
                 break
             else:
                 continue
-        elif value == len(preds) // 3:
+        elif value ==  2: #len(preds) //
             return("TIE")
             break
-        elif value > len(preds) / 3:
+        elif value > len(preds) / 2:
             return(key)
         else:
             continue
