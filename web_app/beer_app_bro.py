@@ -5,6 +5,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from broizer import search_desc
+import sklearn
 
 import warnings
 
