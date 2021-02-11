@@ -79,6 +79,7 @@ def predictor(test_df):
     res_dic = dict(clean_pred)
     if 'Lager/Cream Ale' in res_dic.keys():
         return('Lager/Cream Ale')
+        print('lager!')
     else:
         for key, value in res_dic.items():
             # if key == 'Lager/Cream Ale':
