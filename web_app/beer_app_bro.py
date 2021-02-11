@@ -33,10 +33,10 @@ test_df = search_desc(desc)
 # with open("xgb3b.pickle", 'rb') as to_read:
 #     xgb3b = pickle.load(to_read)
 
-knn3b = pickle.load(open('pkl_models/knn3b.pickle', 'rb'))
-mnb3b = pickle.load(open('pkl_models/mnb3b.pickle', 'rb'))
-svc3b = pickle.load(open('pkl_models/svc3b.pickle', 'rb'))
-xgb3b = pickle.load(open('pkl_models/xgb3b.pickle', 'rb'))
+knn3b = pickle.load(open('app/beer_project/web_app/pkl_models/knn3b.pickle', 'rb'))
+mnb3b = pickle.load(open('app/beer_project/web_app/pkl_models/mnb3b.pickle', 'rb'))
+svc3b = pickle.load(open('app/beer_project/web_app/pkl_models/svc3b.pickle', 'rb'))
+xgb3b = pickle.load(open('app/beer_project/web_app/pkl_models/xgb3b.pickle', 'rb'))
 
 # test_df = get_stats()
 def predictor(test_df):
