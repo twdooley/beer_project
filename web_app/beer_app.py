@@ -78,15 +78,15 @@ def predictor(test_df):
     res_dic = dict(clean_pred)
     for key, value in res_dic.items():
         if key == 'Lager/Cream Ale':
-            if value >= 2:
-                return('Lager/Cream Ale')
-                break
-            else:
-                continue
-        elif value ==  2: #len(preds) //
-            return("Mmm.. that could be a few things, keep sliding.")
+            # if value >= 2:
+            return('Lager/Cream Ale')
             break
-        elif value > len(preds) / 2:
+            # else:
+            #     continue
+        # elif value ==  2: #len(preds) //
+        #     return("Mmm.. that could be a few things, keep sliding.")
+        #     break
+        elif value >= 2:
             return(key)
         else:
             continue
