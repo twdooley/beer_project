@@ -12,6 +12,7 @@ warnings.filterwarnings('ignore')
 st.title('Beer Classifier')
 
 st.markdown(' ## What Type of Beer am I Drinking?')
+st.markdown(' ### :point_left: Check the sidebar for more details!')
 st.markdown(' ### All variables set to default mean values.')
 ogi = st.slider(key='OG', label="Original Gravity", min_value=1.00, max_value=1.10, step=0.001, value = 1.063)
 fgi = st.slider(key='FG', label="Final Gravity", min_value=1.00, max_value=1.10, step=0.001, value = 1.014)
