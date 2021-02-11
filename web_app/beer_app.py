@@ -17,13 +17,8 @@ ogi = st.slider(key='OG', label="Original Gravity", min_value=1.00, max_value=1.
 fgi = st.slider(key='FG', label="Final Gravity", min_value=1.00, max_value=1.10, step=0.001, value = 1.014)
 abvi = st.slider(key='ABV', label="ABV", min_value=0.0, max_value=15.0, step=0.01, value = 6.23)
 srmi = st.slider(key='SRM', label="SRM", min_value=0.0, max_value= 100.0, step=1.0, value = 13.5)
-<<<<<<< HEAD
-ibui = st.slider(key ='IBU', label="IBU", min_value=0.0, max_value=120.0, step=1.0, value = 44.0)
-hopi = st.slider(key='hop', label="How Complex is the Hop Profile?", min_value=0.0, max_value=100.0, step=1.0, value = 35.0)*1.5
-=======
 ibui = st.slider(key='IBU', label="IBU", min_value=0.0, max_value=120.0, step=1.0, value = 44.0)
 hopi = st.slider(key='hop', label="How Complex is the Hop Profile?", min_value=0.0, max_value=150.0, step=1.0, value = 35.0)
->>>>>>> f94df3f97aa191fc43a9470e9d8da5039ab16fd3
 
 bugui = float(ibui / ((ogi - .999999999) * 1000))
 beer_array = np.array([ogi, fgi, abvi, srmi, ibui, bugui, hopi])
@@ -37,8 +32,8 @@ with open('forest3op.pickle', 'rb') as to_read:
     forest3op = pickle.load(to_read)
 with open('knn3.pickle', 'rb') as to_read:
     knn3 = pickle.load(to_read)
-#with open('mnb3.pickle', 'rb') as to_read:
-#    mnb3 = pickle.load(to_read)
+with open('mnb3.pickle', 'rb') as to_read:
+    mnb3 = pickle.load(to_read)
 with open('logr3.pickle', 'rb') as to_read:
     logr3 = pickle.load(to_read)
 with open('xgb3.pickle', 'rb') as to_read:
@@ -47,7 +42,7 @@ with open('xgb3.pickle', 'rb') as to_read:
 
 # test_df = get_stats()
 def predictor(test_df):
-    preds = [knn3.predict(test_df)[0], logr3.predict(test_df)[0],
+    preds = [knn3.predict(test_df)[0], mnb3.predict(test_df)[0], logr3.predict(test_df)[0],
              forest3op.predict(test_df)[0], forest3.predict(test_df)[0], xgb3.predict(test_df)[0],
              xgb3.predict(test_df)[0]]
     clean_pred = defaultdict(int)
@@ -55,18 +50,22 @@ def predictor(test_df):
         if pred == 'IPA/Pale Ales':
             clean_pred['IPA/Pale Ales'] += 1
         elif pred == 'Strong/Dark Ales':
-            clean_pred['Stout/Porter and Farmhouse Ales'] += 1
+            clean_pred['Strong/Dark Ales'] += 1
         elif pred == 'Lager/Cream Ale':
             clean_pred['Lager/Cream Ale'] += 1
         else:
-            clean_pred['Other (Sours, Experimental, Holiday, Weird Beer)'] += 1
+            clean_pred['Other'] += 1
     res_dic = dict(clean_pred)
     for key, value in res_dic.items():
         if key == 'Lager/Cream Ale':
-            if value >= 1:
-                return 'Lager/Cream Ale'
+            if value >= 2:
+                return('Lager/Cream Ale')
+                break
             else:
                 continue
+        elif value == len(preds) // 3:
+            return("TIE")
+            break
         elif value > len(preds) / 3:
             return(key)
         else:
@@ -74,15 +73,7 @@ def predictor(test_df):
 
 st.markdown("## Oh, I know! You're drinking \n")
 st.markdown("# " + predictor(test_df))
-if predictor(test_df) == 'IPA/Pale Ales':
-    st.image('ipa_img.jpg', use_column_width = True)
-if predictor(test_df) == 'Stout/Porter and Farmhouse Ales':
-    st.image('stout_img.jpg', use_column_width = True)
-if predictor(test_df) == 'Lager/Cream Ale':
-    st.image('lager_img.jpg', use_column_width=True)
-if predictor(test_df) == 'Other (Sours, Experimental, Holiday, Weird Beer)':
-    st.image('gose_img.jpg', use_column_width=True)
-
+# print(res_dic, preds)
 
 
 
