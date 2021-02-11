@@ -24,13 +24,13 @@ test_df = search_desc(desc)
 
 # with open('f3.pickle', 'rb') as to_read:
 #     forest3b = pickle.load(to_read)
-with open('pkl_models/knn3b.pickle', 'rb') as to_read:
+with open('beer_project/web_app/pkl_models/knn3b.pickle', 'rb') as to_read:
     knn3b = pickle.load(to_read)
-with open('pkl_models/mnb3b.pickle', 'rb') as to_read:
+with open('beer_project/web_app/pkl_models/mnb3b.pickle', 'rb') as to_read:
     mnb3b = pickle.load(to_read)
-with open('pkl_models/svc3b.pickle', 'rb') as to_read:
+with open('beer_project/web_app/pkl_models/svc3b.pickle', 'rb') as to_read:
     svc3b = pickle.load(to_read)
-with open('pkl_models/xgb3b.pickle', 'rb') as to_read:
+with open('beer_project/web_app/pkl_models/xgb3b.pickle', 'rb') as to_read:
     xgb3b = pickle.load(to_read)
 
 
