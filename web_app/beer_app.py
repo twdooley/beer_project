@@ -72,6 +72,12 @@ def predictor(test_df):
 
 st.markdown("## Oh, I know! You're drinking \n")
 st.markdown("# " + predictor(test_df))
+if predictor(test_df) == 'IPA/Pale Ales':
+    st.image('/app/beer_project/web_app/ipa_img.jpg', use_column_width=True)
+if predictor(test_df) == 'Strong/Dark Ales':
+    st.image('/app/beer_project/web_app/stout_img.jpg', use_column_width=True)
+if predictor(test_df) == 'Lager/Cream Ale':
+    st.image('/app/beer_project/web_app/lager_img.jpg', use_column_width=True)
 # print(res_dic, preds)
 
 
