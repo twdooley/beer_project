@@ -18,7 +18,7 @@ fgi = st.slider(key='FG', label="Final Gravity", min_value=1.00, max_value=1.10,
 abvi = st.slider(key='ABV', label="ABV", min_value=0.0, max_value=15.0, step=0.01, value = 6.23)
 srmi = st.slider(key='SRM', label="SRM", min_value=0.0, max_value= 100.0, step=1.0, value = 13.5)
 ibui = st.slider(key='IBU', label="IBU", min_value=0.0, max_value=120.0, step=1.0, value = 44.0)
-hopi = st.slider(key='hop', label="How Complex is the Hop Profile?", min_value=0.0, max_value=10.0, step=1.0, value = 2.5) * 15
+hopi = st.slider(key='hop', label="How Complex is the Hop Profile?", min_value=0.0, max_value=10.0, step=0.25, value = 2.5) * 15
 
 bugui = float(ibui / ((ogi - .999999999) * 1000))
 beer_array = np.array([ogi, fgi, abvi, srmi, ibui, bugui, hopi])
