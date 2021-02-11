@@ -1,0 +1,9 @@
+#Ignore these files
+__pycache__
+pickles/
+explore_kaggle.ipynb
+/data
+*.csv
+*.pickle
+*3.pickle
+web_app/*.pickle
