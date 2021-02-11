@@ -77,20 +77,24 @@ def predictor(test_df):
         else:
             clean_pred['Other'] += 1
     res_dic = dict(clean_pred)
-    for key, value in res_dic.items():
-        if key == 'Lager/Cream Ale':
-            # if value >= 2:
-            return('Lager/Cream Ale')
-            break
-            # else:
-            #     continue
-        # elif value ==  2: #len(preds) //
-        #     return("Mmm.. that could be a few things, keep sliding.")
-        #     break
-        elif value >= 2:
-            return(key)
-        else:
-            continue
+    if 'Lager/Cream Ale' in res_dic.keys():
+        return('Lager/Cream Ale')
+    else:
+        for key, value in res_dic.items():
+            # if key == 'Lager/Cream Ale':
+            #     return('Lager/Cream Ale')
+
+            #     # if value >= 2:
+            #     #break
+            #     # else:
+            #     #     continue
+            # # elif value ==  2: #len(preds) //
+            # #     return("Mmm.. that could be a few things, keep sliding.")
+            # #     break
+            if value >= 2:
+                return(key)
+            else:
+                continue
 
 st.markdown("## Oh, I know! You're drinking \n")
 st.markdown("# " + predictor(test_df))
