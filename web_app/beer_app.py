@@ -31,7 +31,7 @@ st.sidebar.markdown("### Background")
 st.sidebar.markdown("This project was built from over 27,000 homebrewer recipes on BrewersFriend.com.  \
     The idea was to crowdsource what makes certain styles a style beyond just the marketing mumbo jumbo we get on our bottles. \
         Tim Dooley created me! You can find him on [GitHub](https://github.com/twdooley), [LinkedIn](https://www.linkedin.com/in/timothy-dooley-phd/), \
-            and his own personal website https://timdooley.com where a write up about thsi project can be found!")
+            and his own personal website https://timdooley.com where a write up about this project can be found!")
 st.sidebar.markdown(break_line, unsafe_allow_html = True)
 st.sidebar.markdown("### Key to Sliders")
 st.sidebar.markdown("Beer is a complex thing! What you see here are more complex numerical ways to think about beer!  \
