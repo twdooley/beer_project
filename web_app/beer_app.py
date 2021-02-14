@@ -34,7 +34,7 @@ st.sidebar.markdown("This project was built from over 27,000 homebrewer recipes 
             and his own personal website https://timdooley.com where a write up about this project can be found!")
 st.sidebar.markdown(break_line, unsafe_allow_html = True)
 st.sidebar.markdown("### Examples to try")
-st.sidebar.markdown("Try * `OG 1.05`, `FG 1.01`, `ABV 4.30`, `SRM 3.0`, `IBU 12`, `Hops 2.00`. Lager/Cream Ale! What would make it an IPA? Bump the SRM up, what happens?")
+st.sidebar.markdown("Try `OG 1.05`, `FG 1.01`, `ABV 4.30`, `SRM 3.0`, `IBU 12`, `Hops 2.00`. Lager/Cream Ale! What would make it an IPA? Bump the SRM up, what happens?")
 st.sidebar.markdown(break_line, unsafe_allow_html = True)
 st.sidebar.markdown("### Key to Sliders")
 st.sidebar.markdown("Beer is a complex thing! What you see here are more complex numerical ways to think about beer!  \
