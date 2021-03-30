@@ -65,6 +65,7 @@ def load_models():
         logr3 = pickle.load(to_read)
     with open('/app/beer_project/web_app/xgb3.pickle', 'rb') as to_read:
         xgb3 = pickle.load(to_read)
+    return knn3, logr3, xgb3
         
 knn3, logr3, xgb3 = load_models()
 
