@@ -51,18 +51,22 @@ st.sidebar.markdown("* IBU, International Bittering Units. How bitter is this be
 st.sidebar.markdown("* Hop Complexity. This ones a bit of a judgement call. On a scale of 0-10, how many different hops go into this beer? Just one? Around 0-3. A bunch, 9-10!")
 
 
-# with open('forest3.pickle', 'rb') as to_read:
-#     forest3 = pickle.load(to_read)
-# with open('forest3op.pickle', 'rb') as to_read:
-#     forest3op = pickle.load(to_read)
-with open('/app/beer_project/web_app/knn3.pickle', 'rb') as to_read:
-    knn3 = pickle.load(to_read)
-# with open('mnb3.pickle', 'rb') as to_read:
-#    mnb3 = pickle.load(to_read)
-with open('/app/beer_project/web_app/logr3.pickle', 'rb') as to_read:
-    logr3 = pickle.load(to_read)
-with open('/app/beer_project/web_app/xgb3.pickle', 'rb') as to_read:
-    xgb3 = pickle.load(to_read)
+@st.cache(allow_output_mutation=True)
+def load_models():
+    # with open('forest3.pickle', 'rb') as to_read:
+    #     forest3 = pickle.load(to_read)
+    # with open('forest3op.pickle', 'rb') as to_read:
+    #     forest3op = pickle.load(to_read)
+    with open('/app/beer_project/web_app/knn3.pickle', 'rb') as to_read:
+        knn3 = pickle.load(to_read)
+    # with open('mnb3.pickle', 'rb') as to_read:
+    #    mnb3 = pickle.load(to_read)
+    with open('/app/beer_project/web_app/logr3.pickle', 'rb') as to_read:
+        logr3 = pickle.load(to_read)
+    with open('/app/beer_project/web_app/xgb3.pickle', 'rb') as to_read:
+        xgb3 = pickle.load(to_read)
+        
+knn3, logr3, xgb3 = load_models()
 
 
 # test_df = get_stats()
